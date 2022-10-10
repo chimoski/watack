@@ -1,9 +1,39 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	font-family: "Montserrat", sans-serif;
+}
+.light {
+	--bg: rgb(242, 235, 235);
+	--wrapperBg: rgb(255, 255, 255);
+	--screenBg: rgb(255, 255, 255);
+	--screen1Text: #333;
+	--screen2Text: #333;
+	--flagText: #fff;
+	--btnColor: #333;
+	--btnBg: rgba(254, 254, 254, 0.7);
+	--btnHoverBg: rgb(242, 240, 240);
+	--btnBoxBg: rgb(251, 249, 249);
+	--wrapperShadow: 5px 5px 26px #c7c7c7, -5px -5px 26px #f9f9f9;
+	--timeColor: #333;
+}
+
+.dark {
+	--bg: #333;
+	--wrapperBg: black;
+	--screenBg: rgb(0, 0, 0);
+	--screen1Text: rgb(168, 162, 162);
+	--screen2Text: white;
+	--flagText: white;
+	--btnColor: rgb(216, 212, 212);
+	--btnBg: rgb(12, 12, 12);
+	--btnHoverBg: rgb(21, 21, 21);
+	--btnBoxBg: rgb(15, 17, 24);
+	--isBorder: none;
+	--timeColor: rgb(236, 228, 228);
 }
 
 body {
@@ -11,27 +41,66 @@ body {
 	align-items: center;
 	justify-content: center;
 	height: 100vh;
+	background-color: var(--bg);
 }
 
 .wrapper {
-	background: black;
+	background: var(--wrapperBg);
 	max-width: 400px;
 	height: 600px;
 	border-radius: 10px;
+	position: relative;
+	box-shadow: var(--wrapperShadow);
+}
+.wrapper .time {
+	position: absolute;
+	z-index: 10;
+	left: 10px;
+	top: 10px;
+	color: var(--timeColor);
 }
 
 .screen {
-	background: rgb(0, 0, 0);
+	background: var(--screenBg);
 	width: 100%;
-	height: 40%;
+	height: 35%;
 	padding: 10px;
 	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-end;
+	position: relative;
+	border-radius: 22px;
+}
+.screen div {
+	margin-bottom: 2rem;
+	color: var(--screen2Text);
+	padding-right: 20px;
+	font-size: 35px;
+}
+.screen1 {
+	color: var(--screen1Text) !important;
+	font-size: 20px !important;
+	position: relative;
+}
+.screen2 {
+	position: relative;
+}
+.screen span {
+	font-size: 12px;
+	bottom: -15px;
+	margin-left: 5px;
+	position: absolute;
+	color: var(--flagText);
+	background: green;
+	padding: 0 10px;
 }
 
 .buttonBox {
 	width: 100%;
-	height: 60%;
-	background: rgb(15, 17, 24);
+	height: 65%;
+	background: var(--btnBoxBg);
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 	border-bottom-left-radius: 10px;
@@ -42,19 +111,21 @@ body {
 	grid-gap: 10px;
 	padding: 10px;
 	padding-bottom: 20px;
+	border: var(--isBorder);
 }
 
 .btn {
-	color: rgb(216, 212, 212);
-	background: rgb(12, 12, 12);
+	color: var(--btnColor);
+	background: var(--btnBg);
 	border: none;
 	padding: 10px 20px;
 	cursor: pointer;
 	font-size: 18px;
 	border-radius: 5px;
 }
+.btn:active,
 .btn:hover {
-	background: rgb(21, 21, 21);
+	background: var(--btnHoverBg);
 }
 
 .sideBtns {
@@ -69,13 +140,36 @@ body {
 	color: red;
 	grid-column: 3/5;
 }
-.textarea {
-	background-color: black;
-	border: none;
-	resize: none;
-	color: white;
-	outline: none;
-	text-align: right;
-	padding-right: 20px;
-	padding-top: 50%;
+.wrapper .themeToggle {
+}
+.switch-container div {
+	/* background-image: url("./Image//stars.webp"); */
+	display: flex;
+	width: 75px;
+	height: 35px;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0 6px;
+	background-color: rgb(15, 128, 101);
+	border-radius: 50px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	padding: 1px;
+	z-index: 100;
+	cursor: pointer;
+}
+.switch-container div i {
+	font-size: 20px;
+}
+.switch-container div .fa-sun {
+	color: gold;
+	transition: 0.8s;
+}
+.switch-container div .fa-moon {
+	color: #fff;
+	transition: 0.8s;
+}
+.switch-container div .ball {
+	display: none;
 }

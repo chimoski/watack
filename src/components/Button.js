@@ -1,9 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 
-export const Button = ({ value, onClick, className }) => {
+const Button = ({ className, value, onClick }) => {
 	return (
 		<button className={`btn ${className}`} onClick={onClick}>
 			{value}
 		</button>
 	);
 };
+
+export default memo(Button);
