@@ -48,14 +48,14 @@ function reducer(state, { type, payload }) {
 	switch (type) {
 		case Actions.ADD_VALUES:
 			if (currentValue == "0" && payload == "0") return state;
-			if (payload == "." && currentValue.includes(".")) return state;
-			if (currentValue === null && payload == ".") {
-				console.log("hello");
-				return {
-					...state,
-					currentValue: payload,
-				};
-			}
+			if (
+				payload === "." &&
+				currentValue &&
+				currentValue.includes(".") &&
+				overWrite === false
+			)
+				return state;
+
 			if (overWrite === true) {
 				return {
 					...state,
@@ -73,7 +73,7 @@ function reducer(state, { type, payload }) {
 			}
 			return {
 				...state,
-				currentValue: `${currentValue || " "}${payload}`,
+				currentValue: `${currentValue ?? " "}${payload}`,
 				isComputated: false,
 			};
 		case Actions.DELETE:
