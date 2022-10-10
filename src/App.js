@@ -277,7 +277,7 @@ function App() {
 						key={idx}
 						value={val}
 						onClick={() => {
-							navigator.vibrate([200]);
+							navigator.vibrate([50]);
 							if (_screenValues.includes(val)) {
 								dispatch({ type: Actions.ADD_SCREENVALUES, payload: val });
 							}
