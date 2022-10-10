@@ -173,7 +173,7 @@ body {
 .switch-container div .ball {
 	display: none;
 }
-@media (max-width: 400px) {
+@media (max-width: 500px) {
 	.wrapper {
 		background: var(--wrapperBg);
 		width: 100vw;
