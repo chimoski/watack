@@ -49,6 +49,12 @@ function reducer(state, { type, payload }) {
 		case Actions.ADD_VALUES:
 			if (currentValue == "0" && payload == "0") return state;
 			if (payload == "." && currentValue.includes(".")) return state;
+			if (currentValue == null && payload == ".") {
+				return {
+					...state,
+					currentValue: payload,
+				};
+			}
 			if (overWrite === true) {
 				return {
 					...state,
@@ -236,6 +242,7 @@ function App() {
 	const transformMoon =
 		theme === "dark" ? "translateX(0px) rotate(350deg)" : "translateX(-45px)";
 	const opacityMoon = theme === "dark" ? "1" : "0";
+	const switchBg = theme === "light" ? "rgb(15, 128, 101)" : "rgb(90, 128, 15)";
 
 	return (
 		<div className='wrapper'>
@@ -244,7 +251,7 @@ function App() {
 			<div
 				className='switch-container'
 				onClick={() => toggleTheme(theme, setTheme)}>
-				<div className='box'>
+				<div className='box' style={{ background: switchBg }}>
 					<i
 						className='fas fa-sun '
 						id='sun'

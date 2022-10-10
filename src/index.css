@@ -10,13 +10,13 @@
 	--bg: rgb(242, 235, 235);
 	--wrapperBg: rgb(255, 255, 255);
 	--screenBg: rgb(255, 255, 255);
-	--screen1Text: #333;
+	--screen1Text: rgb(147, 143, 143);
 	--screen2Text: #333;
 	--flagText: #fff;
 	--btnColor: #333;
 	--btnBg: rgba(254, 254, 254, 0.7);
 	--btnHoverBg: rgb(242, 240, 240);
-	--btnBoxBg: rgb(251, 249, 249);
+	--btnBoxBg: rgb(245, 239, 239);
 	--wrapperShadow: 5px 5px 26px #c7c7c7, -5px -5px 26px #f9f9f9;
 	--timeColor: #333;
 }
@@ -83,6 +83,7 @@ body {
 	color: var(--screen1Text) !important;
 	font-size: 20px !important;
 	position: relative;
+	overflow: none;
 }
 .screen2 {
 	position: relative;
@@ -150,7 +151,6 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 6px;
-	background-color: rgb(15, 128, 101);
 	border-radius: 50px;
 	position: absolute;
 	right: 10px;
@@ -172,4 +172,14 @@ body {
 }
 .switch-container div .ball {
 	display: none;
+}
+@media (max-width: 400px) {
+	.wrapper {
+		background: var(--wrapperBg);
+		width: 100vw;
+		height: 100vh;
+		border-radius: 10px;
+		position: relative;
+		box-shadow: var(--wrapperShadow);
+	}
 }
