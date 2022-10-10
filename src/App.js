@@ -49,7 +49,8 @@ function reducer(state, { type, payload }) {
 		case Actions.ADD_VALUES:
 			if (currentValue == "0" && payload == "0") return state;
 			if (payload == "." && currentValue.includes(".")) return state;
-			if (currentValue == null && payload == ".") {
+			if (currentValue === null && payload == ".") {
+				console.log("hello");
 				return {
 					...state,
 					currentValue: payload,
@@ -72,7 +73,7 @@ function reducer(state, { type, payload }) {
 			}
 			return {
 				...state,
-				currentValue: `${currentValue || ""}${payload}`,
+				currentValue: `${currentValue || " "}${payload}`,
 				isComputated: false,
 			};
 		case Actions.DELETE:
@@ -265,11 +266,10 @@ function App() {
 			</div>
 			<div className='screen'>
 				{isComputated && <span>Ans</span>}
-				<div className='screen1'>{computation}</div>
-				<div className='screen2'>
-					{currentValue}
-					{operators}
+				<div className='screen1'>
+					{computation} {operators}
 				</div>
+				<div className='screen2'>{currentValue}</div>
 			</div>
 			<div className='buttonBox'>
 				{btnValues.flat().map((val, idx) => (
@@ -277,6 +277,10 @@ function App() {
 						key={idx}
 						value={val}
 						onClick={() => {
+							navigator.vibrate([
+								100, 30, 100, 30, 100, 30, 200, 30, 200, 30, 200, 30, 100, 30,
+								100, 30, 100,
+							]);
 							if (_screenValues.includes(val)) {
 								dispatch({ type: Actions.ADD_SCREENVALUES, payload: val });
 							}
